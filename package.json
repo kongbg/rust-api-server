@@ -1,0 +1,24 @@
+{
+  "name": "api-server",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "git clone https://github.com/api-serve.git",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon ./src/app.js",
+    "pm2": "pm2 start ./src/app.js--name rust-api-server"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "koa": "^2.14.1",
+    "koa-bodyparser": "^4.4.0",
+    "koa-router": "^12.0.0",
+    "lowdb": "^5.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  }
+}
