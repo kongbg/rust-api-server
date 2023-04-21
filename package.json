@@ -7,7 +7,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon ./src/app.js",
-    "pm2": "pm2 start ./src/app.js--name rust-api-server"
+    "pm2": "pm2 start ./src/app.js --name rust-api-server"
   },
   "keywords": [],
   "author": "",
