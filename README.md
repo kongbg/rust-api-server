@@ -13,7 +13,7 @@
     npm run dev
 
 ### rustDesk API服务器填写下面地址
-    http://ip:6200
+    http://ip:21114
 
 ### 部署
     安装pm2
