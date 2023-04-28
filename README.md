@@ -23,7 +23,7 @@
 
 ### 注意事项
     1.6200端口要放开服务器防火墙
-    2.默认账号密码：admin/admin 可在controllers/rust.js 的19-20行修改
+    2.默认账号密码：admin/admin. 可在controllers/rust.js 的19-20行修改
 
 ### TODO
     1. jwt验证
