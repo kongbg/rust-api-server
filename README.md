@@ -1,4 +1,14 @@
-# rustDeak自建api-server
+# rustDesk自建api-server
+
+    该项目只是 rustDesk API服务，需配置 rustDesk 自建服务器使用。
+    没有rustDesk API服务,只部署rustDesk 自建服务器也能正常使用，只是没有账号体系。
+    部署 rustDesk API服务 后可以登录账号，自动加载历史添加设备。
+	
+[自建服务器文档](https://rustdesk.com/docs/zh-cn/self-host/)
+
+
+![rustDesk API服务填写](https://imgse.com/i/piF19IK)
+
 
 ### 克隆代码
     git clone https://github.com/kongbg/rust-api-server.git
