@@ -29,6 +29,12 @@
     http://ip:21114
 
 ### 部署
+    克隆代码
+        git clone https://github.com/kongbg/rust-api-server.git
+    进入项目目录
+        cd  /rust-api-server
+    安装依赖
+        npm install
     安装pm2
         npm install -g pm2
     启动服务
@@ -42,5 +48,5 @@
     1. jwt验证
     2. docker化部署
     3. 新增/删除用户
-    4. 标签给背景颜色
+    4. 标签改背景颜色
 
