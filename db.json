@@ -1,0 +1,15 @@
+{
+  "rust": {
+    "users": [
+      {
+        "id": "r001",
+        "username": "admin",
+        "password": "admin.",
+        "token": "",
+        "uuid": ""
+      }
+    ],
+    "tags": [],
+    "peers": []
+  }
+}

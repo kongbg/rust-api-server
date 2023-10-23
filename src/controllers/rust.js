@@ -69,6 +69,7 @@ export default class rustController {
         info.token = `${info.id}@${info.username}`
         await db.write()
         result = {
+          type: 'access_token',
           access_token: info.token,
           user: {
             "name": info.username
@@ -135,6 +136,7 @@ export default class rustController {
      * @memberof rustController
      */
     static async addAb(ctx) {
+      let result = {};
       const params = ctx.request.body;
       const token = ctx.request.header.authorization.replace('Bearer ', '');
       const userInfo = rust.users.find(item=> {
@@ -163,6 +165,10 @@ export default class rustController {
         })
       }
       await db.write()
+      result = {
+        data:"成功成功"
+      }
+      ctx.body = result
     }
 
     /**
@@ -176,26 +182,62 @@ export default class rustController {
       const userInfo = rust.users.find(item=> {
         return item.token == token;
       })
-      // console.log('getAbs:', token)
-      if (userInfo) {
-        const peer = rust.peers.find(item => {
-          return item.user_id == userInfo.id;
-        })
-        const tag = rust.tags.find(item => {
-          return item.user_id == userInfo.id;
-        })
-        result = {
-          error: false,
-          updated_at: "2022-09-23 12:00:22",// TODO
-          data: JSON.stringify({tags: tag ? tag.tags : [], peers: peer ? peer.peers: []})
-        }
 
-      } else {
-        result = {
+      if (!userInfo) {
+        return ctx.body = {
           error: 'token有误'
         }
       }
-      ctx.body = result
+
+      let method = ctx.request.method;
+      // console.log('getAbs:', method, userInfo)
+      if (method === 'GET') {
+        let user_id = userInfo.id;
+        // 获取tags
+        const tagInfo = rust.tags.find(item=> {
+          return item.user_id == user_id;
+        })
+        // console.log('peerInfo:', tagInfo)
+
+        // 获取peers
+        const peerInfo = rust.peers.find(item=> {
+          return item.user_id == user_id;
+        })
+        // console.log('peerInfo:', peerInfo)
+
+        result = {
+          // updated_at: '',
+          data: JSON.stringify({
+            tags: tagInfo.tags || [],
+            peers: peerInfo.peers || []
+          })
+        }
+
+        // result = {
+        //   error:"获取地址簿有误"
+        // }
+        ctx.body = result
+      } else if (method === 'POST') {
+        if (userInfo) {
+          const peer = rust.peers.find(item => {
+            return item.user_id == userInfo.id;
+          })
+          const tag = rust.tags.find(item => {
+            return item.user_id == userInfo.id;
+          })
+          result = {
+            error: false,
+            updated_at: "2022-09-23 12:00:22",// TODO
+            data: JSON.stringify({tags: tag ? tag.tags : [], peers: peer ? peer.peers: []})
+          }
+
+        } else {
+          result = {
+            error: 'token有误'
+          }
+        }
+        ctx.body = result
+      }
     }
 
     /**
@@ -248,5 +290,18 @@ export default class rustController {
         }
       }
       ctx.body = result;
+    }
+
+    /**
+     * 获取组信息
+     * @param {Context} ctx
+     * @memberof rustController
+     */
+    static  getUsersGroup(ctx) {
+      // console.log('getUsersGroup:', ctx)
+      let result = {
+        error: "获取组信息失败"
+      }
+      ctx.body = result
     }
   }

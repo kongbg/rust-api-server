@@ -3,6 +3,9 @@
     该项目只是 rustDesk API服务，需配置 rustDesk 自建服务器使用。
     没有rustDesk API服务,只部署rustDesk 自建服务器也能正常使用，只是没有账号体系。
     部署 rustDesk API服务 后可以登录账号，自动加载历史添加设备。
+
+    兼容：v1.1.9, v1.2.2 v1.2.3版本
+    只完成最小闭环，部分小功能未实现
 	
 [自建服务器文档](https://rustdesk.com/docs/zh-cn/self-host/)
 
@@ -38,4 +41,6 @@
 ### TODO
     1. jwt验证
     2. docker化部署
+    3. 新增/删除用户
+    4. 标签给背景颜色
 
