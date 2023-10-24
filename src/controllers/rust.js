@@ -4,7 +4,7 @@ import { JSONFile } from 'lowdb/node'
 
 
 const __dirname = Path.resolve();
-const filePath = `${Path.join(__dirname)}/db.json`
+const filePath = `${Path.join(__dirname)}/src/data/db.json`
 // console.log(filePath);
 const adapter = new JSONFile(filePath)
 const db = new Low(adapter)
@@ -145,13 +145,13 @@ export default class rustController {
       const data = JSON.parse(params.data)
       // console.log('addAb:', data)
 
-      const tag = rust.tags.find(item => item.user_id == userInfo.id);
+      const tag = rust.tags.find(item => item.user_id == userInfo?.id);
       if (tag) {
         tag.tags = data.tags
       } else {
         rust.tags.push({
-          user_id: userInfo.id,
-          tags: data.tags
+          user_id: userInfo?.id,
+          tags: data?.tags
         })
       }
 
@@ -197,7 +197,7 @@ export default class rustController {
         const tagInfo = rust.tags.find(item=> {
           return item.user_id == user_id;
         })
-        // console.log('peerInfo:', tagInfo)
+        // console.log('tagInfo:', tagInfo)
 
         // 获取peers
         const peerInfo = rust.peers.find(item=> {
@@ -208,8 +208,8 @@ export default class rustController {
         result = {
           // updated_at: '',
           data: JSON.stringify({
-            tags: tagInfo.tags || [],
-            peers: peerInfo.peers || []
+            tags: tagInfo?.tags || [],
+            peers: peerInfo?.peers || []
           })
         }
 
@@ -228,7 +228,7 @@ export default class rustController {
           result = {
             error: false,
             updated_at: "2022-09-23 12:00:22",// TODO
-            data: JSON.stringify({tags: tag ? tag.tags : [], peers: peer ? peer.peers: []})
+            data: JSON.stringify({tags: tag?.tags || [], peers: peer?.peers || []})
           }
 
         } else {
