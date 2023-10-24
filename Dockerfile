@@ -1,4 +1,4 @@
-FROM kongbage/node:latest
+FROM kongbg/node:latest
 WORKDIR /usr/src/app
 COPY package*.json ./
 RUN npm install cnpm -g --registry=https://registry.npm.taobao.org

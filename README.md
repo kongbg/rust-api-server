@@ -28,7 +28,10 @@
 ### rustDesk API服务器填写下面地址
     http://ip:21114
 
-### 部署
+### 构建docker(前提是本机安装了docker)
+    docker build -t rust-api-server .
+
+### pm2部署
     克隆代码
         git clone https://github.com/kongbg/rust-api-server.git
     进入项目目录
@@ -40,13 +43,15 @@
     启动服务
         npm run pm2
 
+### docker部署
+    docker run --name rust-api-server -p 21114:21114 -v /mnt/user/app/rust-api-server/data:/usr/src/app/src/data kongbg/rust-api-server
+
 ### 注意事项
     1.6200端口要放开服务器防火墙
     2.默认账号密码：admin/admin. 可在controllers/rust.js 的19-20行修改
 
 ### TODO
     1. jwt验证
-    2. docker化部署
-    3. 新增/删除用户
-    4. 标签改背景颜色
+    2. 新增/删除用户
+    3. 标签改背景颜色
 
