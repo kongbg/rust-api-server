@@ -44,7 +44,7 @@
         npm run pm2
 
 ### docker部署
-    docker run --name rust-api-server -p 21114:21114 -v /mnt/user/app/rust-api-server/data:/usr/src/app/src/data kongbg/rust-api-server
+    docker run -td --name rust-api-server --restart=always -p 21114:21114 -v /mnt/user/app/rust-api-server/data:/usr/src/app/src/data kongbg/rust-api-server
 
 ### 注意事项
     1.6200端口要放开服务器防火墙
